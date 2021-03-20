@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student_base',
     'django.contrib.sites',
+    'user_authentication',
     #autentication
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'pages.apps.PagesConfig',
     'crispy_forms',
+    #My windown loggin
 ]
 
 MIDDLEWARE = [
