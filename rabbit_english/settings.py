@@ -155,3 +155,9 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 # Email único
 ACCOUNT_UNIQUE_EMAIL = True
+#disconnect logic due to inactivity
+
+#log out of user in 10 minutes
+SESSION_COOKIE_AGE = 600
+#Reset the timer when user makes a new request
+SESSION_SAVE_EVERY_REQUEST = True

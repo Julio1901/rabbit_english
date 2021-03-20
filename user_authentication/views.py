@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from .forms import *
 
 def testView(request):
@@ -51,17 +51,23 @@ def userLogin(request):
     if request.method == 'POST':
         form = loginForm(request.POST)
         if form.is_valid():
-            form_values = request.POST.dict()
-            email = form_values.get('email')
-            password = form_values.get('password')
-
+            #form_values = request.POST.dict()
+            #email = form_values.get('email')
+            #password = form_values.get('password')
+            #another way to do this
+            email = request.POST['email']
+            password = request.POST['password']
             user = authenticate(email=f'{email}', password=f'{password}')
 
             if user is not None:
-                return render(request, 'sucess.html')
+                #test login
+                login(request, user)
+                return redirect('/students/add-word')
             else:
                 return render(request, 'test.html')
     else:
         form = loginForm()
         return render(request, 'user_login.html', {'form':form})
 
+def userLogout(request):
+    logout(request)
