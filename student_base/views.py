@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import WordForm
+from .models import *
 from django.conf import settings
 from django.shortcuts import redirect
 
@@ -13,6 +14,12 @@ def insertWord(request):
         if request.method == 'POST':
             form = WordForm(request.POST)
             if form.is_valid():
+                word_to_save = request.POST['word']
+                translate_to_save = request.POST['translate']
+                # user_name_to_register_word = set here que user name
+                user_name_to_register = 'second_teste_user_name'
+                word_with_translate = Words(user_name = f'{user_name_to_register}',word= f'{word_to_save}', translate= f'{translate_to_save}')
+                word_with_translate.save()
                 return HttpResponseRedirect('add-word')
             else:
                 return HttpResponseRedirect('add-word')
