@@ -50,6 +50,7 @@ def createTest(request):
 def userLogin(request):
     if request.method == 'POST':
         form = loginForm(request.POST)
+
         if form.is_valid():
             #form_values = request.POST.dict()
             #email = form_values.get('email')
