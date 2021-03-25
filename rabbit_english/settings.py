@@ -136,6 +136,12 @@ AUTHENTICATION_BACKENDS= [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+
+]
+
+
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 #Enable for the user to remain logged in
