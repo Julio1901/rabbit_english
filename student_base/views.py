@@ -32,16 +32,12 @@ def DisplayAllWords(request):
         return redirect('/authenticate/user-loguin')
     else:
         all_registers_by_user = Words.objects.filter(user_name='Julio Cesar Pereira')
-
         #Check out a better way to abstract this
-        
         all_words = []
-
         for x in all_registers_by_user:
             word = x.word
             translate = x.translate
-            all_words.append(f'Word: {word} Translate: {translate}')
-        
-
-        return render(request, 'display_all_words.html', {'all_words': all_words})
+            user_name = x.user_name
+            all_words.append((word, translate))
+        return render(request, 'display_all_words.html', {'all_words': all_words, 'user_name':user_name})
     
