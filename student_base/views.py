@@ -32,7 +32,8 @@ def DisplayAllWords(request):
     if not request.user.is_authenticated:
         return redirect('/authenticate/user-loguin')
     else:
-        all_registers_by_user = Words.objects.filter(user_name='Julio Cesar Pereira')
+        user_name = request.user
+        all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
         #Pagination to all registers
 
         registers_to_display_per_page = Paginator(all_registers_by_user, 5)
@@ -48,3 +49,11 @@ def DisplayAllWords(request):
             all_words.append((word, translate))
         return render(request, 'display_all_words.html', {'all_words': all_words, 'user_name':user_name, 'page_obj': page_obj})
         #return render(request, 'display_all_words.html', {'page_obj' : page_obj})
+
+def WordGame(request):
+    if not request.user.is_authenticated:
+        return redirect('/authenticate/user-login')
+    else:
+        #Insert here the form logic
+        return render(request, 'word_game.html')
+
