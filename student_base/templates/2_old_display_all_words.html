@@ -13,44 +13,47 @@
 
 <body class='degrade_display'>
   <h1 class='title'>All words by {{user_name}}</h1>
-<div class='container'>
+
   <table class='words-table'>
     <tr>
       <td class='table-title'>Word</td>
       <td class='table-title'>Translate</td>
     </tr>
 
-{% for contact in page_obj %}
+
+{% for x in all_words %}
   <tr class='all-words-table'>
-    <td class='words'>{{ contact.word}}</td>
-    <td class='words'>{{ contact.translate}}</td>
+    <td class='words'> {{x.0}}</td>
+    <td class='words' >{{x.1}} </td>
   </tr>
 {% endfor %}
   </table>
 
-<div class='pagination-div'>
-    <span class='pagination-span'>
+
+<!--Paginator test-->
+
+{% for x in test%}
+  {{x.0.word|upper}}
+  {{x.1.translate}}
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
         {% if page_obj.has_previous %}
-            <a class='prev'href="?page=1">&laquo; first page</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous page</a>
-
-        <span>
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
         {% endif %}
 
-        {% if not page_obj.has_previous%}
-          <span class= 'pagination-page'>
-        {% endif %}
-    
+        <span class="current">
             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
         </span>
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next page</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last page&raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
 </div>
 
-</div>
 
 </body>

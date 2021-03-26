@@ -7,6 +7,10 @@
   margin-left: 35%;
 }
 
+.container{
+  width: auto;
+}
+
 .words-table{
   margin-left: 38%;
   margin-top: 10%;
@@ -30,3 +34,25 @@
   border-width: 1px;
 
 }
+
+.pagination{
+  margin-left: 26%;
+  margin-top: 10%;
+  font-weight: bold;
+}
+
+.pagination-div{
+    display: inline-block;
+    width: 700px;
+    margin-top: 10%;
+    margin-left: 38%;
+}
+
+.pagination-page{
+  margin-left: 10%;
+}
+
+.prev{
+  margin-left: -15%;
+}
+

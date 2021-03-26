@@ -6,6 +6,7 @@ from .models import *
 from django.conf import settings
 from django.shortcuts import redirect
 from user_authentication.forms import *
+from django.core.paginator import Paginator
 
 def insertWord(request):
     #check if user is logged in, if not, redirect to login screen
@@ -32,6 +33,12 @@ def DisplayAllWords(request):
         return redirect('/authenticate/user-loguin')
     else:
         all_registers_by_user = Words.objects.filter(user_name='Julio Cesar Pereira')
+        #Pagination to all registers
+
+        registers_to_display_per_page = Paginator(all_registers_by_user, 5)
+        page_number = request.GET.get('page')
+        page_obj = registers_to_display_per_page.get_page(page_number)
+
         #Check out a better way to abstract this
         all_words = []
         for x in all_registers_by_user:
@@ -39,5 +46,5 @@ def DisplayAllWords(request):
             translate = x.translate
             user_name = x.user_name
             all_words.append((word, translate))
-        return render(request, 'display_all_words.html', {'all_words': all_words, 'user_name':user_name})
-    
+        return render(request, 'display_all_words.html', {'all_words': all_words, 'user_name':user_name, 'page_obj': page_obj})
+        #return render(request, 'display_all_words.html', {'page_obj' : page_obj})
