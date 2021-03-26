@@ -51,9 +51,38 @@ def DisplayAllWords(request):
         #return render(request, 'display_all_words.html', {'page_obj' : page_obj})
 
 def WordGame(request):
+    import random 
+
     if not request.user.is_authenticated:
         return redirect('/authenticate/user-login')
     else:
-        #Insert here the form logic
-        return render(request, 'word_game.html')
+
+        if not request.method == 'POST':
+            #Insert here the form logic
+            user_name = request.user
+            all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
+            drawn_word = random.choice(all_registers_by_user)
+            #delet hit_or_miss after test
+            hit_or_miss = 'O resultado da resposta aparecerá aqui'
+            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss})
+
+        else:
+            form_value = request.POST.dict()
+            answer = form_value.get('user_answer')
+            previously_word = request.POST.get("last_word_answer")
+
+            user_name = request.user
+            all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
+            drawn_word = random.choice(all_registers_by_user)
+            
+            if answer != None:
+
+                if previously_word == answer:
+                    hit_or_miss = 'Acertou'
+                else:
+                    hit_or_miss = 'Errou'
+            else:
+                hit_or_miss = 'Seu resultado aparecerá aqui'
+
+            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word })
 
