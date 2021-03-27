@@ -1,0 +1,22 @@
+
+A template here
+
+<form method='post'>
+
+  {% csrf_token%}
+  
+  <input type='text' name='user_answer'>
+
+  <input type='submit' value='Submit'>
+  <input type="hidden" name="last_word_answer" value= '{{drawn_word.translate}}'>
+
+
+  {{hit_or_miss}}
+
+   
+   <p>Palavra sorteada: {{drawn_word.word}} </p>
+
+   <p>resposta anterior: {{test}} </p>
+
+   <p>palavra anterior : {{previously_word}} </p>
+</form>
