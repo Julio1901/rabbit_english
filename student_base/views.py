@@ -64,7 +64,8 @@ def WordGame(request):
             drawn_word = random.choice(all_registers_by_user)
             #delet hit_or_miss after test
             hit_or_miss = 'O resultado da resposta aparecerá aqui'
-            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss})
+            pontuation = 0
+            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'pontuation':pontuation})
 
         else:
             form_value = request.POST.dict()
@@ -74,15 +75,18 @@ def WordGame(request):
             user_name = request.user
             all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
             drawn_word = random.choice(all_registers_by_user)
+
+            pontuation = int(form_value.get('last_pontuation'))
             
             if answer != None:
 
                 if previously_word == answer:
                     hit_or_miss = 'Acertou'
+                    pontuation += 1
                 else:
                     hit_or_miss = 'Errou'
             else:
                 hit_or_miss = 'Seu resultado aparecerá aqui'
 
-            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word })
+            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word, 'pontuation': pontuation })
 

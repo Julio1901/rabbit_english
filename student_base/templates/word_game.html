@@ -33,7 +33,7 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Random word here</h2>
+                    <h2 class="title">Palavra sorteada: {{drawn_word.word}}</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST">
@@ -44,7 +44,9 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="first_name">
+                                            <input class="input--style-5" type="text" name="user_answer">
+                                            <input type="hidden" name="last_word_answer" value= '{{drawn_word.translate}}'>
+                                            <input type="hidden" name="last_pontuation" value='{{pontuation}}'>
                                             <label class="label--desc">Digite a tradução aqui</label>
                                         </div>
                                     </div>
@@ -54,11 +56,16 @@
                         <div>
                             <button class="btn btn--radius-2 btn--red" type="submit">Enviar Resposta</button>
                         </div>
+                         
+                        <h3 class='result'>{{hit_or_miss}}</h3>
+                        <p> Total de pontos: {{pontuation}} </p>
+
+                        </div>
                     </form>
                 </div>
-            </div>
         </div>
-    </div>
+  </div>
+
 
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
