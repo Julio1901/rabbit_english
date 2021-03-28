@@ -1,0 +1,14 @@
+.body-style{
+background: rgb(0,0,0);
+background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(30,144,217,0.9612219887955182) 100%);
+}
+
+.options{
+  margin-left: 45%;
+  margin-top:25%;
+}
+
+.option{
+  font-weight: bolder;
+  color: white;
+}
