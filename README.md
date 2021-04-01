@@ -12,7 +12,7 @@
 > Status do Projeto: Em desenvolvimento :warning:
 
 
-<img link='https://user-images.githubusercontent.com/47728178/113341403-80cc7500-9303-11eb-8fda-ad8d6e9deae6.png'>
+<img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit_01.png'>
 
 #### How to run the project
 - Steps to run the project
