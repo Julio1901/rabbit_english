@@ -17,7 +17,7 @@
 <img link='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit3.png'>
 <img link='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit5.png'>
 
-####How to run the project
+#### How to run the project
 - Steps to run the project
   - No terminal, clone o projeto:
     - https://github.com/Julio1901/rabbit_english.git
