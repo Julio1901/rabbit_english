@@ -28,18 +28,16 @@ def insertWord(request):
             form = WordForm()
             return render(request, 'word_form.html', {'form': form})
 
-def DisplayAllWords(request):
+def displayAllWords(request):
     if not request.user.is_authenticated:
-        return redirect('/authenticate/user-loguin')
+        return redirect('/authenticate/user-login')
     else:
         user_name = request.user
         all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
         #Pagination to all registers
-
         registers_to_display_per_page = Paginator(all_registers_by_user, 5)
         page_number = request.GET.get('page')
         page_obj = registers_to_display_per_page.get_page(page_number)
-
         #Check out a better way to abstract this
         all_words = []
         for x in all_registers_by_user:
@@ -48,38 +46,29 @@ def DisplayAllWords(request):
             user_name = x.user_name
             all_words.append((word, translate))
         return render(request, 'display_all_words.html', {'all_words': all_words, 'user_name':user_name, 'page_obj': page_obj})
-        #return render(request, 'display_all_words.html', {'page_obj' : page_obj})
 
-def WordGame(request):
+def wordGame(request):
     import random 
 
     if not request.user.is_authenticated:
         return redirect('/authenticate/user-login')
     else:
-
         if not request.method == 'POST':
-            #Insert here the form logic
             user_name = request.user
             all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
             drawn_word = random.choice(all_registers_by_user)
-            #delet hit_or_miss after test
             hit_or_miss = 'O resultado da resposta aparecerá aqui'
             pontuation = 0
             return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'pontuation':pontuation})
-
         else:
             form_value = request.POST.dict()
             answer = form_value.get('user_answer')
             previously_word = request.POST.get("last_word_answer")
-
             user_name = request.user
             all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
             drawn_word = random.choice(all_registers_by_user)
-
             pontuation = int(form_value.get('last_pontuation'))
-            
             if answer != None:
-
                 if previously_word == answer:
                     hit_or_miss = 'Acertou'
                     pontuation += 1
@@ -87,9 +76,7 @@ def WordGame(request):
                     hit_or_miss = 'Errou'
             else:
                 hit_or_miss = 'Seu resultado aparecerá aqui'
-
             return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word, 'pontuation': pontuation })
-
 
 def index(request):
     return render(request, 'index.html')
