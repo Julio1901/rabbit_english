@@ -13,6 +13,10 @@
 
 
 <img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit_01.png'>
+<img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit02.png'>
+<img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit03.png'>
+<img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit3.png'>
+<img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit5.png'>
 
 #### How to run the project
 - Steps to run the project
