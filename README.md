@@ -29,7 +29,7 @@
   - Entre na pasta do projeto:
     - cd rabbit_english
   - Start um servidor local no diretório onde se encontra o "manage.py":
-    - python manage.py run server
+    - python manage.py runserver
     - Por padrão, o servidor irá iniciar na porta 8000
     - Pegue o link do servidor local que apareceu no terminal, algo como "http://127.0.0.1:8000/" e cole no navegador
 
