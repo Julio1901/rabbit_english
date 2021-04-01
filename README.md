@@ -19,7 +19,9 @@
 <img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit03.png'>
 <img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit3.png'>
 <img src='https://github.com/Julio1901/rabbit_english/blob/cleaning_project/readme_images/rabbit5.png'>
-#### Features que faltam ser desenvolvidas:
+
+
+#### Features que faltam ser desenvolvidas
 - Exclusão de palavra no dicionário do estudante
 - Exibição de histórico com as palavras que o estudante errou com maior frequência nos últimos 3 jogos
 - Exibição de histórico com as palavras mais erradas e mais acertadas pelo estudante
