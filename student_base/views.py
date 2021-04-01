@@ -90,3 +90,7 @@ def WordGame(request):
 
             return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word, 'pontuation': pontuation })
 
+
+def index(request):
+    return render(request, 'index.html')
+

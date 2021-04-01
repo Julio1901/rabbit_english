@@ -63,8 +63,8 @@ def userLogin(request):
             if user is not None:
                 #test login
                 login(request, user)
-                #return redirect('/students/add-word')
-                return render (request,  'index.html')
+                return redirect('/students/index')
+                #return render (request,  'index.html')
             else:
                 return render(request, 'test.html')
     else:
@@ -73,3 +73,5 @@ def userLogin(request):
 
 def userLogout(request):
     logout(request)
+
+
