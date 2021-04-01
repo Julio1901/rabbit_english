@@ -3,11 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import *
 
-def testView(request):
-    return render(request, 'test.html')
-
-def createTest(request):
-
+def createUser(request):
     if request.method == 'POST':
         form = registrationForm(request.POST)
         if form.is_valid():
@@ -21,11 +17,10 @@ def createTest(request):
             all_users = User.objects.all()
             has_email_in_database = False
             has_user_name_in_database = False
-            menssage = 'Create your login'
             for one_user in all_users:
-                email_user = one_user.email
+                email_check = one_user.email
                 username_check = one_user.username
-                if email_user == email:
+                if email_check == email:
                     has_email_in_database = True
                     message = 'Email adress alredy exist'
                     break
@@ -37,12 +32,11 @@ def createTest(request):
             if has_email_in_database == False and has_user_name_in_database == False:
                 user =  User.objects.create_user(f'{username}',f'{email} ',f'{password}')
                 user.save()
-                return render(request, 'create.html', {'teste':has_email_in_database})
+                return render(request, 'user_successfully_created.html', {'teste':has_email_in_database})
             #Return to form page with message explaining error on the user create
             else:
                 form = registrationForm(request.POST)
                 return render(request, 'create_user.html', {'form':form,'message':message})
-
     else:
         form = registrationForm()
         return render(request, 'create_user.html', {'form':form})
@@ -50,23 +44,15 @@ def createTest(request):
 def userLogin(request):
     if request.method == 'POST':
         form = loginForm(request.POST)
-
         if form.is_valid():
-            #form_values = request.POST.dict()
-            #email = form_values.get('email')
-            #password = form_values.get('password')
-            #another way to do this
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=f'{email}', password=f'{password}')
-
             if user is not None:
-                #test login
                 login(request, user)
                 return redirect('/students/index')
-                #return render (request,  'index.html')
             else:
-                return render(request, 'test.html')
+                return render(request, 'user_not_found.html')
     else:
         form = loginForm()
         return render(request, 'user_login.html', {'form':form})
