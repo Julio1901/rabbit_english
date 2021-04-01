@@ -1,6 +1,6 @@
-#Rabbit English
-##This is a simple web application to assist in the study of the English language
-###Key features
+# Rabbit English
+## This is a simple web application to assist in the study of the English language
+### Key features
 -Cadastro de usuário
   -Cadastro a partir de um endereço de e-mail com formato válido, porém, o mesmo não é verificado
 -Criação de dicionário pessoal de inglês:
@@ -32,13 +32,13 @@
     -Por padrão, o servidor irá iniciar na porta 8000
     -Pegue o link do servidor local que apareceu no terminal, algo como "http://127.0.0.1:8000/" e cole no navegador
 
-#####Backend User exemple:
+##### Backend User exemple:
 
 |id| user_name |     email     |   password  |
 |--| ----------|---------------|-------------|
 |1 |Julio Cesar|julio@gmail.com|minhaSenha@123
 
-######Backend word exemple:
+###### Backend word exemple:
 
 |id| user_name |  word  |translate|
 |--| ----------|--------|---------|
