@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import WordForm
@@ -80,4 +80,9 @@ def wordGame(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def deleteWord(request, id):
+    word = get_object_or_404(Words, pk=id)
+    word.delete()
+    return redirect('/students/display-all-words')
 

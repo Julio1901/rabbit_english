@@ -24,6 +24,7 @@
   <tr class='all-words-table'>
     <td class='words'>{{ contact.word}}</td>
     <td class='words'>{{ contact.translate}}</td>
+    <td class='words'><a href="delete/{{contact.id}}"><img id='trash-icon' src='{% static "images/trash.png"%}'></a><td>
   </tr>
 {% endfor %}
   </table>
