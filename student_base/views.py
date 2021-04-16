@@ -49,6 +49,7 @@ def displayAllWords(request):
 
 def wordGame(request):
     import random 
+    from . import checks_limit_moves
 
     if not request.user.is_authenticated:
         return redirect('/authenticate/user-login')
@@ -59,24 +60,39 @@ def wordGame(request):
             drawn_word = random.choice(all_registers_by_user)
             hit_or_miss = 'O resultado da resposta aparecerá aqui'
             pontuation = 0
-            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'pontuation':pontuation})
+            counter = 0
+            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'pontuation':pontuation, 'counter':counter})
+        
         else:
             form_value = request.POST.dict()
             answer = form_value.get('user_answer')
             previously_word = request.POST.get("last_word_answer")
             user_name = request.user
+            counter = int(form_value.get('counter'))
             all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
             drawn_word = random.choice(all_registers_by_user)
             pontuation = int(form_value.get('last_pontuation'))
+            limit = checks_limit_moves.CheckLimit()
+            limit_exceeded = limit.check_limit(counter)
+
             if answer != None:
                 if previously_word == answer:
                     hit_or_miss = 'Acertou'
                     pontuation += 1
                 else:
                     hit_or_miss = 'Errou'
+                counter +=1
             else:
                 hit_or_miss = 'Seu resultado aparecerá aqui'
-            return render(request, 'word_game.html', {'drawn_word':drawn_word, 'hit_or_miss':hit_or_miss, 'test':answer, 'previously_word':previously_word, 'pontuation': pontuation })
+
+            if limit_exceeded == False:
+                return render(request, 'word_game.html', {'drawn_word':drawn_word,
+            'hit_or_miss':hit_or_miss, 'test':answer,
+            'previously_word':previously_word, 'pontuation': pontuation,
+            'counter':counter })
+
+            else:
+                return render(request, 'index.html')
 
 def index(request):
     return render(request, 'index.html')
