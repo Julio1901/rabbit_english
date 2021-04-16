@@ -1,0 +1,24 @@
+{% load static %}
+
+<body class='body'>
+  <link rel='stylesheet' href="{% static 'game_end/game_end.css' %}">
+
+  <p>End of the game :) </p>
+
+  <p>Sua pontuação foi {{pontuation}}</p>
+
+  <div class='smile'>
+    {%if pontuation >= 7 %}
+      <img src="{% static 'images/happy_smille.png' %}">
+      <p>Parabéns! Você foi bem durante o jogo</p>
+    {%endif%}
+    
+    {%if pontuation < 7 %}
+      <img src="{% static 'images/sad_smille.png' %}">
+      <p>Olha, você não foi muito bem. Mas não desanime, continue praticando,
+      é assim que se melhora! Tudo no começo é difícil.</p>
+    {%endif%}
+
+  </div>
+
+</body>

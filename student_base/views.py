@@ -65,8 +65,8 @@ def wordGame(request):
         
         else:
             form_value = request.POST.dict()
-            answer = form_value.get('user_answer')
-            previously_word = request.POST.get("last_word_answer")
+            answer = form_value.get('user_answer').upper()
+            previously_word = request.POST.get("last_word_answer").upper()
             user_name = request.user
             counter = int(form_value.get('counter'))
             all_registers_by_user = Words.objects.filter(user_name=f'{user_name}')
@@ -92,7 +92,8 @@ def wordGame(request):
             'counter':counter })
 
             else:
-                return render(request, 'index.html')
+                return render(request, 'game_end.html', {'pontuation':
+                pontuation})
 
 def index(request):
     return render(request, 'index.html')

@@ -1,0 +1,8 @@
+.body{
+  background: rgb(255,0,254);
+  background: linear-gradient(90deg, rgba(255,0,254,0.8435749299719888) 0%, rgba(97,9,121,0.8715861344537815) 35%, rgba(0,211,255,0.7287289915966386) 100%);
+}
+
+.smile, img{
+  width: 150px;
+}
