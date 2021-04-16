@@ -45,7 +45,11 @@
                                     <div class="col-2">
                                         <div class="input-group-desc">
                                             <input class="input--style-5" type="text" name="user_answer">
-                                            <input type="hidden" name="last_word_answer" value= '{{drawn_word.translate}}'>
+                                            <input type="hidden"
+                                            name="last_translate_answer" value= '{{drawn_word.translate}}'>
+                                            <input type="hidden"
+                                            name="last_word" value=
+                                            '{{drawn_word.word}}'>
                                             <input type="hidden" name="last_pontuation" value='{{pontuation}}'>
                                             <input type"hidden" name="counter"
                                             value="{{counter}}">
@@ -60,8 +64,16 @@
                         </div>
                          
                         <h3 class='result'>{{hit_or_miss}}</h3>
-                        <p> Total de pontos: {{pontuation}} </p>
-                        <p> Jogadas: {{counter}} </p>
+                        {% if counter != 0 %}
+                          <br>
+                          <p>A última palavra sorteada tinha sido: {{last_word}}</p>
+                          <p>A tradução correta era: {{previously_word}}</p>
+                          <br>
+                          <p>Sua resposta foi: {{answer}}</p>
+                          <br>
+                        {% endif %}
+                        <p> Total de pontos feitos: {{pontuation}} </p>
+                        <p> Total de jogadas até o momento: {{counter}} </p>
 
                         </div>
                     </form>
