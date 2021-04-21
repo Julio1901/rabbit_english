@@ -8,6 +8,8 @@
   - Cadastro a partir de um endereço de e-mail com formato válido, porém, não é verificado se o mesmo está ativo enviando um e-mail para o usuário
 - Criação de dicionário pessoal de inglês:
   - Fetuare para adicionar palavras com suas respectivas traduções à base do usuário logado, criando, assim, um dicionário pessoal de "Palavras aprendidas" em inglês.
+  - Exclusão de palavra no dicionário do estudante
+
   - Feature para exibir todas as palavras que o usuário salvou em seu dicionário pessoal
 - Word Game
   - Um pequeno jogo que sorteia palavras dentro do dicionário pessoal do usuário, exibe na tela e espera receber uma resposta com a tradução da palavra exibida. O mesmo contabiliza pontos positivos toda vez que o usuário acerta uma tradução.
@@ -22,7 +24,6 @@
 
 
 #### Features que faltam ser desenvolvidas
-- Exclusão de palavra no dicionário do estudante
 - Exibição de histórico com as palavras que o estudante errou com maior frequência nos últimos 3 jogos
 - Exibição de histórico com as palavras mais erradas e mais acertadas pelo estudante
 - Criar lógica para que o word game dê preferência em sortear as palavras que o estudante errou com maior frequência nos últimos 3 jogos
